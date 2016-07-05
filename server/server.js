@@ -1,23 +1,15 @@
-var express = require('express');
+const express = require('express');
 const bodyParser = require('body-parser');
-var app = express();
-var port = process.env.PORT || 8080;
+const app = express();
+const port = process.env.PORT || 8080;
+const apiRouter = require ('./api/api-router')
 
 // configure body-parser to extract data from POST
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
 
-/*
- * Routes for our API
- */
-var router = express.Router();
-
-router.get('/', function(req, res) {
-  res.json({"message": "welcome to our api."});
-});
-
 // register API routes
-app.use('/api', router);
+app.use('/api', apiRouter);
 
 // serve our application
 app.use(express.static('app'))
