@@ -17,7 +17,7 @@ router.get('/team', (req, res) => {
 });
 
 // get goals for wanted team
-router.get('/team/:id', (req, res) => {
+router.get('/team/:id/goals', (req, res) => {
    res.json(repository.teamRepository.getGoals(req.params.id))
 });
 
