@@ -1,5 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
+import { FixtureList } from './components/FixtureList'
 
 var ExampleApplication = React.createClass({
         render: function() {
@@ -18,7 +19,8 @@ var ExampleApplication = React.createClass({
       var start = new Date().getTime();
       setInterval(function() {
         ReactDOM.render(
-          ExampleApplicationFactory({elapsed: new Date().getTime() - start}),
+          <FixtureList teamName='spurs' />,
+          //ExampleApplicationFactory({elapsed: new Date().getTime() - start}),
           document.getElementById('container')
         );
       }, 50);

@@ -1,41 +1,27 @@
-var proxy = require('express-http-proxy');
-var os = require('os');
 var express = require('express');
 const bodyParser = require('body-parser');
-
 var app = express();
+var port = process.env.PORT || 8080;
 
-// proxy name, port and route
-var proxyHost = os.hostname();
-var proxyPort = process.env.PORT || 8081;
-var proxyRoute = '/proxy'
-
-// target host
-var targetHost = 'localhost:8080'
- 
-/*
- * set-up proxy so that all requests to
- * proxyhost:port/proxy will be redirected to
- * targethost
- *
- * For example requests to:
- * http://hostA/proxy/myPath
- * may be redirected to:
- * http://hostB/myPath
- */
-app.use('/proxy', proxy(targetHost, {
-  forwardPath: function(req, res) {
-    return require('url').parse(req.url).path;
-  }
-}));
-
-app.use(express.static('app'))
+// configure body-parser to extract data from POST
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
 
-// start our server
-app.listen(proxyPort);
+/*
+ * Routes for our API
+ */
+var router = express.Router();
 
-console.log('Proxy server started on port ' + proxyPort);
-console.log('Requests to:  \'' + proxyHost + ':' + proxyPort + proxyRoute + '/my-path\'');
-console.log('Re-directed to: \'' + targetHost + '/my-path\'');
+router.get('/', function(req, res) {
+  res.json({"message": "welcome to our api."});
+});
+
+// register API routes
+app.use('/api', router);
+
+// serve our application
+app.use(express.static('app'))
+
+// start our server
+app.listen(port);
+console.log('Server started on port ' + port);
