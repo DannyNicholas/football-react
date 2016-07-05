@@ -23,7 +23,7 @@ GET http://<hostname>:8080/api
 
 ### Request
 ```
-GET: http://<hostname>:8081/api/team
+GET: http://<hostname>:8080/api/team
 ```
 
 ### Response
@@ -48,7 +48,7 @@ GET: http://<hostname>:8081/api/team
 
 ### Request
 ```
-GET: http://<hostname>:8081/api/team/{teamId}/goals
+GET: http://<hostname>:8080/api/team/{teamId}/goals
 ```
 
 ### Response
