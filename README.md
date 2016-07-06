@@ -6,6 +6,8 @@ React JS front-end for a football data service
 Start application and server using
 ```
 npm install
+npm install jspm -g
+jspm install
 npm start
 ```
 

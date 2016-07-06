@@ -1,3 +1,5 @@
+import { Map, fromJS } from 'immutable'
+
 function changeTeam(state, id) {
   return state.set('currentTeam', Map().set('teamId', id))
 }
@@ -8,4 +10,4 @@ export default function (state = Map(), action) {
       return changeTeam(state, action.id)
     default:
       return state
-  }
+  }}
