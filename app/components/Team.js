@@ -1,14 +1,31 @@
-import React, { PropTypes } from 'react'
+import React from 'react'
 
-const Team = ({ id, teamName, badgeUrl }) => (
-    <li>
-        {teamName}
-    </li>
-)
+export default class Team extends React.Component {
 
-Team.propTypes = {
-    teamName: PropTypes.string.isRequired,
-    badgeUrl: PropTypes.string.isRequired
+  constructor() {
+    super()
+    this.state = { teamSelected: false }
+  }
+
+  render() {
+
+    const handleChkChange = e => this.setState({ teamSelected: !this.state.teamSelected })
+
+    console.log(this.props.teamName)
+    console.log(this.state)
+
+    return (
+        <li>
+            <img src={this.props.badgeUrl} alt="boohoo" className="img-responsive"/>
+            {this.props.badgeUrl}
+            {this.props.teamName}
+            <input type="checkbox" checked={this.state.teamSelected} onChange={handleChkChange}/>
+        </li>
+    )
+  }
 }
 
-export default Team
+  Team.propTypes = {
+    teamName: React.PropTypes.string.isRequired,
+    badgeUrl: React.PropTypes.string.isRequired
+  }

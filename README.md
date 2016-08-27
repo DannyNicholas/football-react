@@ -72,3 +72,10 @@ GET: http://<hostname>:8080/api/team/{teamId}/goals
 ```
 
 
+### Testing Application
+
+https://github.com/sievins/stub/blob/master/package.json
+http://code.tutsplus.com/tutorials/testing-your-javascript-with-jasmine--net-21229
+http://ericnish.io/blog/set-up-jasmine-and-karma-for-angularjs/
+http://jasmine.github.io/2.0/introduction.html
+https://github.com/Workiva/karma-jspm
