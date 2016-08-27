@@ -1,6 +1,19 @@
-export function changeTeam(id) {
+/*
+* Structure of data
+* teams : {
+    team1 : {
+        goals : [{goals1},{goals2}]
+    }
+}
+
+
+*/
+
+// action to add an array of goals to a specified team
+export function addGoals(teamId, goals) {
     return {
-        type: 'CHANGE_TEAM',
-        id
+        teamId,
+        type: 'ADD_GOALS',
+        goals
     }
 }
