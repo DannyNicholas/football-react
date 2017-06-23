@@ -1,31 +1,37 @@
 import React from 'react'
 
-export default class Team extends React.Component {
-
-  constructor() {
-    super()
-    this.state = { teamSelected: false }
-  }
-
-  render() {
+const Team = ( {team} ) => {
 
     const handleChkChange = e => this.setState({ teamSelected: !this.state.teamSelected })
 
-    console.log(this.props.teamName)
-    console.log(this.state)
+    console.log(team)
+
+    // replace with CSS class
+    const imgStyle = {
+      minHeight: '50px',
+      height: '50px',
+      maxWidth: '100%',
+      maxHeight: '100%',
+      marginLeft: 'auto',
+      marginRight: 'auto',
+    };
 
     return (
-        <li>
-            <img src={this.props.badgeUrl} alt="boohoo" className="img-responsive"/>
-            {this.props.badgeUrl}
-            {this.props.teamName}
-            <input type="checkbox" checked={this.state.teamSelected} onChange={handleChkChange}/>
-        </li>
+       <tr>
+        <td><img src={team.badgeUrl} alt={team.teamName} style={imgStyle}/></td>
+        <td>{team.teamName}</td>
+        <td><input type="checkbox" checked={team.selected} onChange={handleChkChange}/></td>
+      </tr>
     )
-  }
 }
 
-  Team.propTypes = {
+Team.propTypes = {
+  team: React.PropTypes.shape({
+    id: React.PropTypes.number.isRequired,
     teamName: React.PropTypes.string.isRequired,
-    badgeUrl: React.PropTypes.string.isRequired
-  }
+    badgeUrl: React.PropTypes.string.isRequired,
+    selected: React.PropTypes.bool.isRequired
+    }).isRequired
+}
+  
+export default Team 
